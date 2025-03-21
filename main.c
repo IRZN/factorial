@@ -1,25 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-    int num;
-    long long int fator =1; // Usa-se long long int para evitar Overflow
-    // Overflow eh um estouro de variavel - ocorre quando a Saida eh maior que o limite de armazenamento
-    // o int so consegue armazenar ate a casa do bilhao, ja o long long ate o quintilhao
+int main() {
+    int num, cont=0;
+    char r;
+    double fator = 1; 
+    //double tem menos limite que as outras variaveis
 
-    printf ("Digite um numero para descobrir seu fatorial: \n");
-    scanf ("%i", &num);
+    do {
+    printf("\nDigite um numero para descobrir seu fatorial: \n");
+    scanf("%i", &num);
 
-    for(int i =1; i <= num; i++) // Loop que vai de 1 ate 'n'
-        fator *=i; // Multiplica 'f' pelo valor atual de 'i' e armazena o resultado em 'f'
+    for(int i = 1; i <= num; i++)
+    //Loop que vai de '1' ate 'n'
+        fator *=i;
+        // Multiplica 'f' pelo valor atual de 'i' e armazena o resultado em 'f'
 
-    printf("O fatorial do numero escolhido eh: %llu \n", fator);
-    // llu e o codigo de assimilacao do long long , assim como %i ou %d
+    printf("\nO fatorial do numero escolhido eh: %.0lf \n", fator);
+    // .0lf e o codigo de saida para cortar os '0' desnecessarios e a notação cientifica
 
-    // Atualmente o codigo s suporta entrada ate o numero 20
-    // apartir disso ja ultrapassa o limite do long long
+    printf("\nQuer descobrir outro? \n");
+    printf("S - Sim \nN - Nao \n");
+    scanf(" %c", &r);
 
+        if (r == 'n' || r == 'N') {
+            cont = -1;
+        } else {
+            fator = 1;
+        }
+
+    }while (cont > -1);
 
     return 0;
 }
